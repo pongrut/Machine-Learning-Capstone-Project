@@ -38,7 +38,7 @@ rotate, adjust image  gamma , and then place randomly on a prepared background.
 
 ### Datasets and Inputs
 
-This project uses three types of image datasets: 1.) a person's face, 2.) another image without a dummy employee ID card in the picture, 3.) a person portrait.
+This project uses three types of image datasets: 1.) a person's face, 2.) another image without a dummy employee ID card in the picture, 3.) person portrait images.
 1. Creating a dummy employee ID card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [2].
 There are 13,237 total human images from 5,750 individuals and each image size is 250x250 pixels.
 The image files will be shuffled then select images of people that contain more than 1 image in the folder. After that, the image will be filtered out image that contain more than one face because the ID card must have only one face. Finally, select only 1,030 first images to be used for dummy employee ID card creation.
@@ -48,9 +48,14 @@ Shuffle and select for 1,000 images from the original URLs with larger than 768 
 
 
 ### Solution Statement
-_(approx. 1 paragraph)_
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+The photo was taken by the agent who photographed the photo of SIM subscriber's ID card and reuse it as current SIM subscriber photo.  This problem occurred with the original biometric verification system, the system receives two images, the ID card and the current photo of the SIM subscriber.
+The solution of this problem can be prevented by having the agent photograph the current SIM subscriber photo with his/her ID card in a single photo. Using only one image requires an intermediary program for image separation.  Thus, it need to detect two images and send them to the original system in order to split the image,
+there are 2 types of objects must be detected: the current photo of SIM subscriber and  ID card photo.
+
+In the first object type need face detection mechanism, dlib Face Detector will be used as a method for detecting faces because of Face Detector dlib can detect the face effectively [4] .
+The second object type is ID card which will be represented by the dummy employee ID card. The TensorFlow Object Detection API will be used to detect the location of the dummy employee ID card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the dummy employee ID card. The detection precision of dummy employee ID card will be at 0.8 mAP@0.5IOU [7] from the 30 images in test dataset.
+
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
