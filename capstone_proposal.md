@@ -37,9 +37,15 @@ rotate, adjust image  gamma , and then place randomly on a prepared background.
 
 
 ### Datasets and Inputs
-_(approx. 2-3 paragraphs)_
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+This project uses three types of image datasets: 1.) a person's face, 2.) another image without a dummy employee ID card in the picture, 3.) a person portrait.
+1. Creating a dummy employee ID card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [2].
+There are 13,237 total human images from 5,750 individuals and each image size is 250x250 pixels.
+The image files will be shuffled then select images of people that contain more than 1 image in the folder. After that, the image will be filtered out image that contain more than one face because the ID card must have only one face. Finally, select only 1,030 first images to be used for dummy employee ID card creation.
+2. The background images will use images from the Open Images Dataset V3 dataset [3], which provides 41,620 image URLs of validation set.
+Shuffle and select for 1,000 images from the original URLs with larger than 768 pixels width and height image size, then resize them with width and length of at least 768 pixels which will maintain the original aspect ratio.
+3. Personal portrait images will be simulated for real situation testing by using 30 dummy employee ID cards and the 30 person names to search and download person images that larger than 1024 pixels from the google images, in order to keep the photos in the dummy employee ID card which will not be too small that they can not be detected in future facial recognition process.
+
 
 ### Solution Statement
 _(approx. 1 paragraph)_
