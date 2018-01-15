@@ -21,10 +21,10 @@ The concept idea is reducing the shooting time from 2 times to 1 time only, whic
 
 Solution to relieve agent used photo from the ID card submitted as current person photo problem. The system will accept only 1 photo which contain both ID card and current photo to create obstacle for fake photo. The challenge of sending a single image is to locate the ID card and the current photo of the SIM subscriber in the image. Therefore, this project needs to simulate ID card detection by locating the ID card from the image.
 
-Due to privacy restrictions, this project uses a dummy employee card instead of a real ID card. The program will be created to receive an image then accurately locate the dummy employee card. However, it is possible that the agent may put the ID card on the prepared photo and then submit it. This extreme case may be detected by anti-spoofing liveness detection mechanism e.g. eye blinking detection or pupil dilation response, but anti-spoofing liveness detection is not present in scope of this project.
+Due to privacy restrictions, this project uses a Dummy Card instead of a real ID card. The program will be created to receive an image then accurately locate the Dummy Card. However, it is possible that the agent may put the ID card on the prepared photo and then submit it. This extreme case may be detected by anti-spoofing liveness detection mechanism e.g. eye blinking detection or pupil dilation response, but anti-spoofing liveness detection is not present in scope of this project.
 
 The development pipelines are as follows:
-1. Creating 1,030 dummy employee's ID cards by using personal faces from the LFW face dataset, and put them on a dummy employee cards.
+1. Creating 1,030 Dummy Cards by using personal faces from the LFW face dataset, and put them on a Dummy Cards.
 2. Prepare 1,000 images from the Open Images dataset for use as a background images of train and evaluate datasets.
 3. Create 1,000 images dataset for training and evaluating in convolutional neural networks by using 1,000 images of employee's ID cards  and randomly resize,
 rotate, adjust image  gamma , and then place randomly on a prepared background.
@@ -35,6 +35,7 @@ rotate, adjust image  gamma , and then place randomly on a prepared background.
 8. Use the test dataset for training in tensorflow object detection api and evaluate dataset used to evaluate mean average precision (mAP).
 9. Convert the trained model into a frozen graph consisting of the model architecture and weights in one file in .pb format.
 10. Load the trained model in tensorflow object detection api to test on 30 test dataset to present model accuracy.
+
 
 ### Datasets and Inputs
 
