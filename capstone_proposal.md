@@ -34,7 +34,7 @@ rotate, adjust image  gamma , and then place randomly on a prepared background.
 7. Combine all images & labels and then convert into a single tfrecord file for both train and evaluate datasets.
 8. Use the test dataset for training in tensorflow object detection api and evaluate dataset used to evaluate mean average precision (mAP).
 9. Convert the trained model into a frozen graph consisting of the model architecture and weights in one file in .pb format.
-10. Load the trained model in tensorflow object detection api to test on 30 test dataset to present model accuracy.
+10. Load the trained model in tensorflow object detection api to test on 30 test dataset to present model performance.
 
 
 
