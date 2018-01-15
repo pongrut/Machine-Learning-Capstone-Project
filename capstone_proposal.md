@@ -7,7 +7,7 @@ January 1st, 2018
 
 ### Domain Background
 
-In Thailand, person identification methods have been continuing to evolve due to public security issues. The Office of The National Broadcasting and Telecommunications Commission Thailand ([NBTC](https://www.nbtc.go.th/About/history3.aspx)) has launched the new method of registering a new mobile phone SIM card since December 15, 2017. The biometric verification system this new registration method has been used across Thailand in all 55,000 locations which are mobile phone operators’ customer service shops and the networks of the mobile phone operators’ dealers and partners[[1](http://www.nationmultimedia.com/detail/Corporate/30330973)].
+In Thailand, person identification methods have been continuing to evolve due to public security issues. The Office of The National Broadcasting and Telecommunications Commission Thailand (NBTC) has launched the new method of registering a new mobile phone SIM card since December 15, 2017. The biometric verification system this new registration method has been used across Thailand in all 55,000 locations which are mobile phone operators’ customer service shops and the networks of the mobile phone operators’ dealers and partners.
 
 Under this new method, new SIM card subscribers will have insert their ID cards into the finger print reader or the face recognition card reader at the registration locations. The card readers are connected to the mobile phones or PC of the registration locations. In the case of the face recognition system, the locations will take the SIM card users’ face with the mobile phones embedded with an NBTC registration application. Then the app will see if the captured face matches with the face stored in the ID card database. As expected face recognition method is more popular than fingerprint due to the added cost of card readers at service points, which range from 500 baht ($15) to 9,000 baht ($271) but face recognition is no extra cost, it requires only application installed.  Since the biometric verification system has been launched, there are two main problems with the system.
 1. The result of the face recognition that the person in the ID card with the photograph is not matched with sim subscriber's photo, despite the fact the same person.
@@ -15,6 +15,7 @@ Under this new method, new SIM card subscribers will have insert their ID cards 
 
 The capstone project will focus on the demonstration of solution idea for the service points agent used photo from the ID card's submitted as current person photo problem. The object detection technique that which is a part of computer vision will be applied as the main solution.
 The concept idea is reducing the shooting time from 2 times to 1 time only, which will force agents to capture the ID card with the current photo of SIM subscriber. However, to add more security step, the object detection to verify that the submitted photo has contain the ID card with photo of sim subscriber.
+
 
 ### Problem Statement
 
@@ -35,16 +36,15 @@ rotate, adjust image  gamma , and then place randomly on a prepared background.
 9. Convert the trained model into a frozen graph consisting of the model architecture and weights in one file in .pb format.
 10. Load the trained model in tensorflow object detection api to test on 30 test dataset to present model accuracy.
 
-
 ### Datasets and Inputs
 
-This project uses three types of image datasets: 1.) a person's face, 2.) another image without a dummy employee ID card in the picture, 3.) person portrait images.
-1. Creating a dummy employee ID card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [2].
+This project uses three types of image datasets: 1.) a person's face, 2.) another image without a Dummy Card in the picture, 3.) person portrait images.
+1. Creating a Dummy Card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [2].
 There are 13,237 total human images from 5,750 individuals and each image size is 250x250 pixels.
-The image files will be shuffled then select images of people that contain more than 1 image in the folder. After that, the image will be filtered out image that contain more than one face because the ID card must have only one face. Finally, select only 1,030 first images to be used for dummy employee ID card creation.
+The image files will be shuffled then select images of people that contain more than 1 image in the folder. After that, the image will be filtered out image that contain more than one face because the ID card must have only one face. Finally, select only 1,030 first images to be used for Dummy Card creation.
 2. The background images will use images from the Open Images Dataset V3 dataset [3], which provides 41,620 image URLs of validation set.
 Shuffle and select for 1,000 images from the original URLs with larger than 768 pixels width and height image size, then resize them with width and length of at least 768 pixels which will maintain the original aspect ratio.
-3. Personal portrait images will be simulated for real situation testing by using 30 dummy employee ID cards and the 30 person names to search and download person images that larger than 1024 pixels from the google images, in order to keep the photos in the dummy employee ID card which will not be too small that they can not be detected in future facial recognition process.
+3. Personal portrait images will be simulated for real situation testing by using 30 Dummy Card  and the 30 person names to search and download person images that larger than 1024 pixels from the google images, in order to keep the photos in the Dummy Card which will not be too small that they can not be detected in future facial recognition process.
 
 
 ### Solution Statement
@@ -54,13 +54,16 @@ The solution of this problem can be prevented by having the agent photograph the
 there are 2 types of objects must be detected: the current photo of SIM subscriber and  ID card photo.
 
 In the first object type need face detection mechanism, dlib Face Detector will be used as a method for detecting faces because of Face Detector dlib can detect the face effectively [4] .
-The second object type is ID card which will be represented by the dummy employee ID card. The TensorFlow Object Detection API will be used to detect the location of the dummy employee ID card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the dummy employee ID card. The detection precision of dummy employee ID card will be at 0.8 mAP@0.5IOU [7] from the 30 images in test dataset.
+The second object type is ID card which will be represented by the Dummy Card  The TensorFlow Object Detection API will be used to detect the location of the Dummy Card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the Dummy Card  The detection precision of Dummy Card will be at 0.8 mAP@0.5IOU [7] from the 30 images in test dataset.
 
 
 ### Benchmark Model
-_(approximately 1-2 paragraphs)_
 
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+This project will use ssd_mobilenet_v1_coco pre-trained detection models [9] as the transfer learning base for the Dummy Card Detection Model.
+The performance of ssd_mobilenet_v1_coco is 21 mAP which is the subset of the MSCOCO evaluation protocol. However, the most popular metric uses for evaluating the quality of object detection is Mean Average Precision (mAP) on the protocol of the PASCAL VOC Challenge 2007 . Therefore, this project benchmark model will base on the PASCAL VOC 2007 metrics and to match the benchmark model fairly with benchmark model.
+
+The benchmark model is Dat Tran's Raccoon detector [8] performance at the best score of 0.8 mAP@0.5IOU. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model is expected to score at 0.8 mAP@0.5IOU as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
+
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
