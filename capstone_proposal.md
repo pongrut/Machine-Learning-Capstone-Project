@@ -29,12 +29,13 @@ The development pipelines are as follows:
 3. Create 1,000 images dataset for training and evaluating in convolutional neural networks by using 1,000 images of employee's ID cards  and randomly resize,
 rotate, adjust image  gamma , and then place randomly on a prepared background.
 4. Prepare test dataset by downloading 30 more images of person from google image in order to make it close to real scene photo and then bring the remaining 30 employee's ID cards to randomly placed on the already downloaded image.
-5. This step is to label dummy employee's ID card by creating an image annotation of all 1,030 cards on the xml format file.
+5. This step is to label Dummy Card by creating an image annotation of all 1,030 cards on the xml format file.
 6. Split 1,000 images dataset to be 900 train dataset, 100 for evaluate dataset and also another real scene 30 for test dataset.
 7. Combine all images & labels and then convert into a single tfrecord file for both train and evaluate datasets.
 8. Use the test dataset for training in tensorflow object detection api and evaluate dataset used to evaluate mean average precision (mAP).
 9. Convert the trained model into a frozen graph consisting of the model architecture and weights in one file in .pb format.
 10. Load the trained model in tensorflow object detection api to test on 30 test dataset to present model accuracy.
+
 
 
 ### Datasets and Inputs
