@@ -57,7 +57,7 @@ The solution of this problem can be prevented by having the agent photograph the
 there are 2 types of objects must be detected: the current photo of SIM subscriber and  ID card photo.
 
 In the first object type need face detection mechanism, dlib Face Detector will be used as a method for detecting faces because of Face Detector dlib can detect the face effectively [[6]](#ref).
-The second object type is ID card which will be represented by the Dummy Card  The TensorFlow Object Detection API will be used to detect the location of the Dummy Card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the Dummy Card  The detection precision of Dummy Card will be at 0.8 mAP@0.5IOU [[5]](#ref) from the 30 images in test dataset.
+The second object type is ID card which will be represented by the Dummy Card  The TensorFlow Object Detection API will be used to detect the location of the Dummy Card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the Dummy Card  The detection precision of Dummy Card will be at 0.8 `mAP@0.5IOU` [[5]](#ref) from the 30 images in test dataset.
 
 
 
@@ -66,7 +66,7 @@ The second object type is ID card which will be represented by the Dummy Card  T
 This project will use ssd_mobilenet_v1_coco pre-trained detection models[[7]](#ref) as the transfer learning base for the Dummy Card Detection Model.
 The performance of ssd_mobilenet_v1_coco is 21 mAP which is the subset of the MSCOCO evaluation protocol. However, the most popular metric uses for evaluating the quality of object detection is Mean Average Precision (mAP) on the protocol of the PASCAL VOC Challenge 2007[[8]](#ref). Therefore, this project benchmark model will base on the PASCAL VOC 2007 metrics and to match the benchmark model fairly with benchmark model.
 
-The benchmark model is Dat Tran's Raccoon detector[[9]](#ref) performance at the best score of 0.8 mAP@0.5IOU. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model is expected to score at 0.8 mAP@0.5IOU as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
+The benchmark model is Dat Tran's Raccoon detector[[9]](#ref) performance at the best score of 0.8 `mAP@0.5IOU`. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model is expected to score at 0.8 `mAP@0.5IOU` as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
 
 
 
@@ -82,9 +82,9 @@ False positives: Not Dummy Card images that the model incorrectly detected, clas
 False negatives: Dummy Card images that the model did did not detect as Dummy Cards.
 
 The principal quantitative measure used will be the mean average precision (mAP) of PASCAL VOC 2007 metrics.
-Detections are considered True positives and False positives from the area overlapping with predicted bounding boxes BP and ground truth bounding boxes GTB (Intersection Over Union). Intersection Over Union (IOU) is an evaluation metric used to evaluate the accuracy of object detection model. If BP and GTB overlap 100% is the maximum accuracy. However, the mAP@0.5IOU is determined that overlap between the predicted bounding box of BP and the ground truth bounding box GTB must exceed 50% the prediction is considered a true positive.  To calculate mean average precision (mAP) metrics by looping overall all ground-truth bounding boxes in the validation dataset.
+Detections are considered True positives and False positives from the area overlapping with predicted bounding boxes BP and ground truth bounding boxes GTB (Intersection Over Union). Intersection Over Union (IOU) is an evaluation metric used to evaluate the accuracy of object detection model. If BP and GTB overlap 100% is the maximum accuracy. However, the `mAP@0.5IOU` is determined that overlap between the predicted bounding box of BP and the ground truth bounding box GTB must exceed 50% the prediction is considered a true positive.  To calculate mean average precision (mAP) metrics by looping overall all ground-truth bounding boxes in the validation dataset.
 
-The IOU formula [10]:
+The IOU formula [[10]](#ref):
 
 ![IOU Formula](https://devblogs.nvidia.com/parallelforall/wp-content/uploads/2016/08/Figure5-624x362.png)
 
@@ -105,6 +105,7 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 [7] Rathod, V (2017). Tensorflow detection model zoo, Retrieved from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md [Last accessed 14 January 2018].<br/>
 [8] PASCAL VOC 2007 metric, Retrieved from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/evaluation_protocols.md#open-images [Last accessed 14 January 2018].<br/>
 [9] Tran, D (2017). How to train your own Object Detector with TensorFlow’s Object Detector API,Retrieved from https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9 [Last accessed 14 January 2018].<br/>
+[10] Barker, J and Gray, A (2016). Exploring the SpaceNet Dataset Using DIGITS, Retrieved from https://devblogs.nvidia.com/parallelforall/exploring-spacenet-dataset-using-digits/ [Last accessed 14 January 2018].<br/>
 
 
 **Before submitting your proposal, ask yourself. . .**
