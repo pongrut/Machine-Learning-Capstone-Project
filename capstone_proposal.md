@@ -24,27 +24,28 @@ Solution to relieve agent used photo from the ID card submitted as current perso
 Due to privacy restrictions, this project uses a Dummy Card instead of a real ID card. The program will be created to receive an image then accurately locate the Dummy Card. However, it is possible that the agent may put the ID card on the prepared photo and then submit it. This extreme case may be detected by anti-spoofing liveness detection mechanism e.g. eye blinking detection or pupil dilation response, but anti-spoofing liveness detection is not present in scope of this project.
 
 The development pipelines are as follows:
-1. Creating 1,030 Dummy Cards by using personal faces from the LFW face dataset, and put them on a Dummy Cards.
-2. Prepare 1,000 images from the Open Images dataset for use as a background images of train and evaluate datasets.
+1. Creating 1,030 Dummy Cards by using personal faces from the LFW face dataset [[2]](#ref), and put them on a Dummy Cards.
+2. Prepare 1,000 images from the Open Images dataset [[3]](#ref) for use as a background images of train and evaluate datasets.
 3. Create 1,000 images dataset for training and evaluating in convolutional neural networks by using 1,000 images of employee's ID cards  and randomly resize,
 rotate, adjust image  gamma , and then place randomly on a prepared background.
 4. Prepare test dataset by downloading 30 more images of person from google image in order to make it close to real scene photo and then bring the remaining 30 employee's ID cards to randomly placed on the already downloaded image.
 5. This step is to label Dummy Card by creating an image annotation of all 1,030 cards on the xml format file.
 6. Split 1,000 images dataset to be 900 train dataset, 100 for evaluate dataset and also another real scene 30 for test dataset.
 7. Combine all images & labels and then convert into a single tfrecord file for both train and evaluate datasets.
-8. Use the test dataset for training in tensorflow object detection api and evaluate dataset used to evaluate mean average precision (mAP).
+8. Use the test dataset for training in tensorflow object detection api [[4]](#ref) and evaluate dataset used to evaluate mean average precision (mAP)[[5]](#ref).
 9. Convert the trained model into a frozen graph consisting of the model architecture and weights in one file in .pb format.
 10. Load the trained model in tensorflow object detection api to test on 30 test dataset to present model performance.
+
 
 
 
 ### Datasets and Inputs
 
 This project uses three types of image datasets: 1.) a person's face, 2.) another image without a Dummy Card in the picture, 3.) person portrait images.
-1. Creating a Dummy Card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [2].
+1. Creating a Dummy Card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [[2]](#ref).
 There are 13,237 total human images from 5,750 individuals and each image size is 250x250 pixels.
 The image files will be shuffled then select images of people that contain more than 1 image in the folder. After that, the image will be filtered out image that contain more than one face because the ID card must have only one face. Finally, select only 1,030 first images to be used for Dummy Card creation.
-2. The background images will use images from the Open Images Dataset V3 dataset [3], which provides 41,620 image URLs of validation set.
+2. The background images will use images from the Open Images Dataset V3 dataset [[3]](#ref), which provides 41,620 image URLs of validation set.
 Shuffle and select for 1,000 images from the original URLs with larger than 768 pixels width and height image size, then resize them with width and length of at least 768 pixels which will maintain the original aspect ratio.
 3. Personal portrait images will be simulated for real situation testing by using 30 Dummy Card  and the 30 person names to search and download person images that larger than 1024 pixels from the google images, in order to keep the photos in the Dummy Card which will not be too small that they can not be detected in future facial recognition process.
 
@@ -55,8 +56,9 @@ The photo was taken by the agent who photographed the photo of SIM subscriber's 
 The solution of this problem can be prevented by having the agent photograph the current SIM subscriber photo with his/her ID card in a single photo. Using only one image requires an intermediary program for image separation.  Thus, it need to detect two images and send them to the original system in order to split the image,
 there are 2 types of objects must be detected: the current photo of SIM subscriber and  ID card photo.
 
-In the first object type need face detection mechanism, dlib Face Detector will be used as a method for detecting faces because of Face Detector dlib can detect the face effectively [4] .
-The second object type is ID card which will be represented by the Dummy Card  The TensorFlow Object Detection API will be used to detect the location of the Dummy Card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the Dummy Card  The detection precision of Dummy Card will be at 0.8 mAP@0.5IOU [7] from the 30 images in test dataset.
+In the first object type need face detection mechanism, dlib Face Detector will be used as a method for detecting faces because of Face Detector dlib can detect the face effectively [[6]](#ref).
+The second object type is ID card which will be represented by the Dummy Card  The TensorFlow Object Detection API will be used to detect the location of the Dummy Card of the submitted image. Finally, program will display two faces from the current photo of SIM subscriber and the face from the Dummy Card  The detection precision of Dummy Card will be at 0.8 mAP@0.5IOU [[5]](#ref) from the 30 images in test dataset.
+
 
 
 ### Benchmark Model
@@ -93,7 +95,12 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 -----------
 <a id='ref'></a>
 ### References
-[1] [New SIM registration to require biometric ID starting Dec 15](http://www.nationmultimedia.com/detail/Corporate/30330973)
+[1] Toomgum, S (2017). New SIM registration to require biometric ID starting Dec 15, Retrieved from http://www.nationmultimedia.com/detail/Corporate/30330973/ [Last accessed 14 January 2018].<br/>
+[2] Labeled Faces in the Wild. (2016). Retrieved from http://vis-www.cs.umass.edu/lfw/#resources [Last accessed 14 January 2018].<br/>
+[3] Open Images Dataset V3. (2017). Retrieved from https://github.com/openimages/dataset [Last accessed 14 January 2018].<br/>
+[4] Tensorflow Object Detection API. (2017). Retrieved from https://github.com/tensorflow/models/tree/master/research/object_detection [Last accessed 14 January 2018].<br/>
+[5] Sawtelle, S (2016). Mean Average Precision (MAP) For Recommender Systems, Retrieved from http://sdsawtelle.github.io/blog/output/mean-average-precision-MAP-for-recommender-systems.html [Last accessed 14 January 2018].<br/>
+[6] Muntean, A (2016). Compares face recognition performance of dlib and OpenCV using the WIDER face detection benchmark, Available at: https://github.com/andreimuntean/Dlib-vs-OpenCV/ [Last accessed 14 January 2018].<br/>
 
 **Before submitting your proposal, ask yourself. . .**
 
