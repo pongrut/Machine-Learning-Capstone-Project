@@ -79,7 +79,7 @@ Recall    = [True Positives/(True Positives + False Negatives)]
 
 True positives: Dummy Card images that the model correctly detected
 False positives: Not Dummy Card images that the model incorrectly detected, classifying them as Dummy Cards.
-False negatives: Dummy Card images that the model did did not detect as Dummy Cards.
+False negatives: Dummy Card images that the model did, did not detect as Dummy Cards.
 
 The principal quantitative measure used will be the mean average precision (mAP) of PASCAL VOC 2007 metrics.
 Detections are considered True positives and False positives from the area overlapping with predicted bounding boxes BP and ground truth bounding boxes GTB (Intersection Over Union). Intersection Over Union (IOU) is an evaluation metric used to evaluate the accuracy of object detection model. If BP and GTB overlap 100% is the maximum accuracy. However, the `mAP@0.5IOU` is determined that overlap between the predicted bounding box of BP and the ground truth bounding box GTB must exceed 50% the prediction is considered a true positive.  To calculate mean average precision (mAP) metrics by looping overall all ground-truth bounding boxes in the validation dataset.
