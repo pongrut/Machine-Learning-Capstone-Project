@@ -74,7 +74,7 @@ The benchmark model is Dat Tran's Raccoon detector[[9]](#ref) performance at the
 
 The evaluation of detection task will be judged by the precision/recall curve in which 2 factors are two main parts: the detection are relevant to the object being detected (precision), and the number of detected objects that are relevant (recall).
 
-Precision = [True Positives/(True Positives + False Positives)]
+Precision = [True Positives/(True Positives + False Positives)]<br/>
 Recall    = [True Positives/(True Positives + False Negatives)]
 
 True positives: Dummy Card images that the model correctly detected
