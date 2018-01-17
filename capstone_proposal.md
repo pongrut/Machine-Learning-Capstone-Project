@@ -77,8 +77,8 @@ The evaluation of detection task will be judged by the precision/recall curve in
 Precision = [True Positives/(True Positives + False Positives)]<br/>
 Recall    = [True Positives/(True Positives + False Negatives)]
 
-True positives: Dummy Card images that the model correctly detected
-False positives: Not Dummy Card images that the model incorrectly detected, classifying them as Dummy Cards.
+True positives: Dummy Card images that the model correctly detected<br/>
+False positives: Not Dummy Card images that the model incorrectly detected, classifying them as Dummy Cards.<br/>
 False negatives: Dummy Card images that the model did, did not detect as Dummy Cards.
 
 The principal quantitative measure used will be the mean average precision (mAP) of PASCAL VOC 2007 metrics.
