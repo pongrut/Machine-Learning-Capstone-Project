@@ -63,10 +63,11 @@ The second object type is ID card which will be represented by the Dummy Card  T
 
 ### Benchmark Model
 
-This project will use ssd_mobilenet_v1_coco pre-trained detection models [9] as the transfer learning base for the Dummy Card Detection Model.
-The performance of ssd_mobilenet_v1_coco is 21 mAP which is the subset of the MSCOCO evaluation protocol. However, the most popular metric uses for evaluating the quality of object detection is Mean Average Precision (mAP) on the protocol of the PASCAL VOC Challenge 2007 . Therefore, this project benchmark model will base on the PASCAL VOC 2007 metrics and to match the benchmark model fairly with benchmark model.
+This project will use ssd_mobilenet_v1_coco pre-trained detection models[[7]](#ref) as the transfer learning base for the Dummy Card Detection Model.
+The performance of ssd_mobilenet_v1_coco is 21 mAP which is the subset of the MSCOCO evaluation protocol. However, the most popular metric uses for evaluating the quality of object detection is Mean Average Precision (mAP) on the protocol of the PASCAL VOC Challenge 2007[[8]](#ref). Therefore, this project benchmark model will base on the PASCAL VOC 2007 metrics and to match the benchmark model fairly with benchmark model.
 
-The benchmark model is Dat Tran's Raccoon detector [8] performance at the best score of 0.8 mAP@0.5IOU. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model is expected to score at 0.8 mAP@0.5IOU as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
+The benchmark model is Dat Tran's Raccoon detector[[9]](#ref) performance at the best score of 0.8 mAP@0.5IOU. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model is expected to score at 0.8 mAP@0.5IOU as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
+
 
 
 ### Evaluation Metrics
@@ -100,7 +101,11 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 [3] Open Images Dataset V3. (2017). Retrieved from https://github.com/openimages/dataset [Last accessed 14 January 2018].<br/>
 [4] Tensorflow Object Detection API. (2017). Retrieved from https://github.com/tensorflow/models/tree/master/research/object_detection [Last accessed 14 January 2018].<br/>
 [5] Sawtelle, S (2016). Mean Average Precision (MAP) For Recommender Systems, Retrieved from http://sdsawtelle.github.io/blog/output/mean-average-precision-MAP-for-recommender-systems.html [Last accessed 14 January 2018].<br/>
-[6] Muntean, A (2016). Compares face recognition performance of dlib and OpenCV using the WIDER face detection benchmark, Available at: https://github.com/andreimuntean/Dlib-vs-OpenCV/ [Last accessed 14 January 2018].<br/>
+[6] Muntean, A (2016). Compares face recognition performance of dlib and OpenCV using the WIDER face detection benchmark, Retrieved from https://github.com/andreimuntean/Dlib-vs-OpenCV/ [Last accessed 14 January 2018].<br/>
+[7] Rathod, V (2017). Tensorflow detection model zoo, Retrieved from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md [Last accessed 14 January 2018].<br/>
+[8] PASCAL VOC 2007 metric, Retrieved from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/evaluation_protocols.md#open-images [Last accessed 14 January 2018].<br/>
+[9] Tran, D (2017). How to train your own Object Detector with TensorFlow’s Object Detector API,Retrieved from https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9 [Last accessed 14 January 2018].<br/>
+
 
 **Before submitting your proposal, ask yourself. . .**
 
