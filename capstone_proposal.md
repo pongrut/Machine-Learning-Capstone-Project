@@ -99,10 +99,12 @@ However, object detection create opportunities of applying computer vision to so
 Google released a new object detection API for Tensorflow. The API has been trained on the COCO dataset (Common Objects in Context). 
 The dataset contains photos of 90 objects types with a total of 2.5 million labeled instances in 328k images.
 
-Figure 2: Some of the object categories in COCO dataset.<br/>
+Figure 2: Some of the object categories in COCO dataset.
+
 ![COCO dataset](Categories-COCO-dataset.png)
 
-The API provides 12 different models that provide a trade off between speed of execution and the accuracy in placing bounding boxes [[7]](#ref).<br/>
+The API provides 12 different models that provide a trade off between speed of execution and the accuracy in placing bounding boxes [[7]](#ref).
+
 ![COCO-trained models](COCO-trained models.jpg)
 
 The mAP (mean average precision) is the metric evaluation for precision and recall on detecting bounding boxes.
@@ -112,12 +114,14 @@ The 3 major CNNs (Convolutional Neural Networks) are  a) Single Shot Multibox De
 
 **Faster R-CNN** uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [[13]](#ref). <br/>
 
-Figure 3: The Faster R-CNN. Source: https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png<br/>
+Figure 3: The Faster R-CNN. Source: https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png
+
 ![Faster R-CNN](https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png)
 
 **R-FCN**, or Region-based Fully Convolutional Net, shares 100% of the computations across every single output. Being fully convolutional, it ran into a unique problem in model design.
 each position-sensitive score map represents one relative position of one object class [[11]](#ref).<br/>
-Figure 4: The R-FCN. Source[11]<br/>
+Figure 4: The R-FCN. Source[11]
+
 ![Faster R-CNN](https://cdn-images-1.medium.com/max/800/1*cHEvY3E2HW65AF-mPeMwOg.png)
 
 Overall, there are 600 distinct classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes).
