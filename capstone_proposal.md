@@ -137,7 +137,7 @@ As a result, the network generates more bounding boxes than any other model, and
 (regions not belonging to any object of interest) and the number of foreground(fg) RoIs could reach as high as 100:1 which may cause imbalance problem.
 
 
-For this project to use some guideline hard negative mining technique to maintain at least a bg / fg ratio of 3:1 [[14]](#ref).
+For this project to use some guideline hard negative mining technique to maintain at least a bg / fg ratio of 3:1 [[14]](#ref) to generate dataset for **ssd_mobilenet_v1_coco** model training.
 
 
 
