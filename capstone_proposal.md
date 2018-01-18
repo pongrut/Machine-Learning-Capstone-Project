@@ -105,7 +105,7 @@ Figure 2: Some of the object categories in COCO dataset.
 
 The API provides 12 different models that provide a trade off between speed of execution and the accuracy in placing bounding boxes [[7]](#ref).
 
-![COCO-trained models](COCO-trained models.jpg)
+![COCO-trained models](COCO-trained models.JPG)
 
 The mAP (mean average precision) is the metric evaluation for precision and recall on detecting bounding boxes.
 The higher the mAP score, the more accurate of the model is.<br/>
@@ -120,7 +120,7 @@ Figure 3: The Faster R-CNN. Source: https://andrewliao11.github.io/images/faster
 
 **R-FCN**, or Region-based Fully Convolutional Net, shares 100% of the computations across every single output. Being fully convolutional, it ran into a unique problem in model design.
 each position-sensitive score map represents one relative position of one object class [[11]](#ref).<br/>
-Figure 4: The R-FCN. Source[11]
+Figure 4: The R-FCN.
 
 ![Faster R-CNN](https://cdn-images-1.medium.com/max/800/1*cHEvY3E2HW65AF-mPeMwOg.png)
 
