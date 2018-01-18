@@ -161,6 +161,8 @@ Overall, there are 600 distinct classes with a bounding box attached to at least
 [11] Xu, J. (2017). Deep Learning for Object Detection: A Comprehensive Review , Retrieved from https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9  [Last accessed 18 January 2018].<br/>
 [12] Parthasarathy, D (2017). A Brief History of CNNs in Image Segmentation, Retrieved from https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4.  [Last accessed 18 January 2018].<br/>
 [13] arXiv:1506.01497 [cs.CV]<br/>
+[14] arXiv:1608.02236 [cs.CV]<br/>
+
 
 [15] [15] LI, Z (2016). Speed/accuracy trade-offs for modern convolutional object detectors , Retrieved from http://joshua881228.webfactional.com/topic_ALL_list/14/ [Last accessed 18 January 2018].<br/>
 **Before submitting your proposal, ask yourself. . .**
