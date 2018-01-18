@@ -118,6 +118,7 @@ Figure 3: The Faster R-CNN.
 
 ![Faster R-CNN](https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png)
 
+
 **R-FCN**, or Region-based Fully Convolutional Net, shares 100% of the computations across every single output. Being fully convolutional, it ran into a unique problem in model design.
 each position-sensitive score map represents one relative position of one object class [[11]](#ref).<br/>
 Figure 4: The R-FCN.
