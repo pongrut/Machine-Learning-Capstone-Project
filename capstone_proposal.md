@@ -88,13 +88,15 @@ Detections are considered True positives and False positives from the area overl
 
 ![IOU Formula](https://devblogs.nvidia.com/parallelforall/wp-content/uploads/2016/08/Figure5-624x362.png)
 
-Figure 1: Illustration of IOU Calculation[[10]](#ref).
+Figure 1: Illustration of IOU Calculation. Source:[[10]](#ref).
 
 ### Project Design
 _(approx. 1 page)_
 
 In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
 
+Overall, there are 600 distinct classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes).
+![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)
 
 ![Dataset Creation](dataset_creation.jpg)
 -----------
@@ -110,8 +112,10 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 [8] PASCAL VOC 2007 metric, Retrieved from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/evaluation_protocols.md#open-images [Last accessed 14 January 2018].<br/>
 [9] Tran, D (2017). How to train your own Object Detector with TensorFlow’s Object Detector API,Retrieved from https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9 [Last accessed 14 January 2018].<br/>
 [10] Barker, J and Gray, A (2016). Exploring the SpaceNet Dataset Using DIGITS, Retrieved from https://devblogs.nvidia.com/parallelforall/exploring-spacenet-dataset-using-digits/ [Last accessed 14 January 2018].<br/>
+[11] Xu, J. (2017). Deep Learning for Object Detection: A Comprehensive Review , Retrieved from https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9  [Last accessed 18 January 2018].<br/>
+[12] Parthasarathy, D (2017). A Brief History of CNNs in Image Segmentation, Retrieved from https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4.  [Last accessed 18 January 2018].<br/>
 
-
+[15] [15] LI, Z (2016). Speed/accuracy trade-offs for modern convolutional object detectors , Retrieved from http://joshua881228.webfactional.com/topic_ALL_list/14/ [Last accessed 18 January 2018].<br/>
 **Before submitting your proposal, ask yourself. . .**
 
 - Does the proposal you have written follow a well-organized structure similar to that of the project template?
