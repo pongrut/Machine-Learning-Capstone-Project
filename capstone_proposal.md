@@ -84,9 +84,11 @@ False negatives: Dummy Card images that the model did, did not detect as Dummy C
 The principal quantitative measure used will be the mean average precision (mAP) of PASCAL VOC 2007 metrics.
 Detections are considered True positives and False positives from the area overlapping with predicted bounding boxes BP and ground truth bounding boxes GTB (Intersection Over Union). Intersection Over Union (IOU) is an evaluation metric used to evaluate the accuracy of object detection model. If BP and GTB overlap 100% is the maximum accuracy. However, the `mAP@0.5IOU` is determined that overlap between the predicted bounding box of BP and the ground truth bounding box GTB must exceed 50% the prediction is considered a true positive.  To calculate mean average precision (mAP) metrics by looping overall all ground-truth bounding boxes in the validation dataset.
 
-The IOU formula [[10]](#ref):
+
 
 ![IOU Formula](https://devblogs.nvidia.com/parallelforall/wp-content/uploads/2016/08/Figure5-624x362.png)
+
+Figure 1: Illustration of IOU Calculation[[10]](#ref).
 
 ### Project Design
 _(approx. 1 page)_
