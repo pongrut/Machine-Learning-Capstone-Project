@@ -30,7 +30,7 @@ The development pipelines are as follows:
 rotate, adjust image  gamma , and then place randomly on a prepared background.
 4. Prepare test dataset by downloading 30 more images of person from google image in order to make it close to real scene photo and then bring the remaining 30 employee's ID cards to randomly placed on the already downloaded image.
 5. This step is to label Dummy Card by creating an image annotation of all 1,030 cards on the xml format file.
-6. Split 1,000 images dataset to be 900 train dataset, 100 for evaluate dataset and also another real scene 30 for test dataset.
+6. Split 1,000 images dataset to be 900 train dataset, 100 for validation dataset and also another real scene 30 for test dataset.
 7. Combine all images & labels and then convert into a single tfrecord file for both train and evaluate datasets.
 8. Use the test dataset for training in tensorflow object detection api [[4]](#ref) and evaluate dataset used to evaluate mean average precision (mAP)[[5]](#ref).
 9. Convert the trained model into a frozen graph consisting of the model architecture and weights in one file in .pb format.
@@ -95,6 +95,8 @@ _(approx. 1 page)_
 
 In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
 
+
+![Dataset Creation](https://1drv.ms/i/s!Ai7WHaWwQnevlqdJvDXdnCmuA1wQzA)
 -----------
 <a id='ref'></a>
 ### References
