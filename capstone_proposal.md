@@ -105,14 +105,14 @@ Figure 2: Some of the object categories in COCO dataset.
 
 The API provides 12 different models that provide a trade off between speed of execution and the accuracy in placing bounding boxes [[7]](#ref).
 
-![COCO-trained models](COCO-trained models.JPG)
+![COCO-trained models](COCO-trained-models.JPG)
 
 The mAP (mean average precision) is the metric evaluation for precision and recall on detecting bounding boxes.
 The higher the mAP score, the more accurate of the model is.<br/>
 The 3 major CNNs (Convolutional Neural Networks) are  a) Single Shot Multibox Detector (SSD), b) Faster R-CNN (Faster Region-based CNN) and c) R_FCN (Region-Based Fully Convolutional Networks).
 
 
-**Faster R-CNN** uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [[13]](#ref). <br/>
+**Faster R-CNN** uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [[13]](#ref).
 
 Figure 3: The Faster R-CNN. Source: https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png
 
