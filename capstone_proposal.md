@@ -91,9 +91,34 @@ Detections are considered True positives and False positives from the area overl
 Figure 1: Illustration of IOU Calculation. Source:[[10]](#ref).
 
 ### Project Design
-_(approx. 1 page)_
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+The solution summary of agent photo used from ID card submitted as current person photo problem, the object detection is main part of the algorithm to solve the problem.
+Object detection is more challenging than image recognition and classification. Because the objects also need to be localizing by finding the bounding box around it.
+However, object detection create opportunities of applying computer vision to solve problems in many fields.
+
+Google released a new object detection API for Tensorflow. The API has been trained on the COCO dataset (Common Objects in Context). 
+The dataset contains photos of 90 objects types with a total of 2.5 million labeled instances in 328k images.
+
+Figure 2: Some of the object categories in COCO dataset.<br/>
+![COCO dataset](Categories-COCO-dataset.png)
+
+The API provides 12 different models that provide a trade off between speed of execution and the accuracy in placing bounding boxes [[7]](#ref).<br/>
+![COCO-trained models](COCO-trained models.jpg)
+
+The mAP (mean average precision) is the metric evaluation for precision and recall on detecting bounding boxes.
+The higher the mAP score, the more accurate of the model is.<br/>
+The 3 major CNNs (Convolutional Neural Networks) are  a) Single Shot Multibox Detector (SSD), b) Faster R-CNN (Faster Region-based CNN) and c) R_FCN (Region-Based Fully Convolutional Networks).
+
+
+**Faster R-CNN** uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [[13]](#ref). <br/>
+
+Figure 3: The Faster R-CNN. Source: https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png<br/>
+![Faster R-CNN](https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png)
+
+**R-FCN**, or Region-based Fully Convolutional Net, shares 100% of the computations across every single output. Being fully convolutional, it ran into a unique problem in model design.
+each position-sensitive score map represents one relative position of one object class [[11]](#ref).<br/>
+Figure 4: The R-FCN. Source[11]<br/>
+![Faster R-CNN](https://cdn-images-1.medium.com/max/800/1*cHEvY3E2HW65AF-mPeMwOg.png)
 
 Overall, there are 600 distinct classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes).
 ![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)
