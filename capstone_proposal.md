@@ -114,7 +114,7 @@ The 3 major CNNs (Convolutional Neural Networks) are  a) Single Shot Multibox De
 
 **Faster R-CNN** uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [[13]](#ref).
 
-Figure 3: The Faster R-CNN. Source: https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png
+Figure 3: The Faster R-CNN.
 
 ![Faster R-CNN](https://andrewliao11.github.io/images/faster_rcnn/faster_rcnn_netwrok.png)
 
@@ -143,6 +143,7 @@ Overall, there are 600 distinct classes with a bounding box attached to at least
 [10] Barker, J and Gray, A (2016). Exploring the SpaceNet Dataset Using DIGITS, Retrieved from https://devblogs.nvidia.com/parallelforall/exploring-spacenet-dataset-using-digits/ [Last accessed 14 January 2018].<br/>
 [11] Xu, J. (2017). Deep Learning for Object Detection: A Comprehensive Review , Retrieved from https://towardsdatascience.com/deep-learning-for-object-detection-a-comprehensive-review-73930816d8d9  [Last accessed 18 January 2018].<br/>
 [12] Parthasarathy, D (2017). A Brief History of CNNs in Image Segmentation, Retrieved from https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4.  [Last accessed 18 January 2018].<br/>
+[13] arXiv:1506.01497 [cs.CV]<br/>
 
 [15] [15] LI, Z (2016). Speed/accuracy trade-offs for modern convolutional object detectors , Retrieved from http://joshua881228.webfactional.com/topic_ALL_list/14/ [Last accessed 18 January 2018].<br/>
 **Before submitting your proposal, ask yourself. . .**
