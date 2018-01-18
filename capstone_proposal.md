@@ -125,6 +125,22 @@ Figure 4: The R-FCN.
 
 ![Faster R-CNN](https://cdn-images-1.medium.com/max/800/1*cHEvY3E2HW65AF-mPeMwOg.png)<br/><br/>
 
+
+
+**SSD** (Single-Shot Detector) will differ from the 2 networks described before, by eliminating the proposed generation and regions classification. SSD will reduce the output space of bounding boxes. In prediction time, the network generates scores for the presence of each category object in each default box and produces adjustments to the box to better match the object shape. The network predictions from multiple feature maps with different resolutions to naturally handle objects of various sizes.
+
+Figure 5: The SSD. Source[[11]](#ref)
+
+![SSD](https://cdn-images-1.medium.com/max/1000/1*p-lSawysBsiBzlcWZ9_UMw.png)<br/><br/>
+Training SSD is a challenge in every position of the image. It is fed into the conv. blocks in various sizes and aspect raito and then feeds into the fully connected layer.
+As a result, the network generates more bounding boxes than any other model, and almost all of them are negative examples. the ratio between the number of background (bg) RoIs
+(regions not belonging to any object of interest) and the number of foreground(fg) RoIs could reach as high as 100:1 which may cause imbalance problem.
+
+
+For this project to use some guideline hard negative mining technique to maintain at least a bg / fg ratio of 3: 1 [14]
+
+
+
 Overall, there are 600 distinct classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes).
 ![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)
 
