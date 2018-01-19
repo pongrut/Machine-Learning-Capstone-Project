@@ -145,11 +145,15 @@ For sd_mobilenet_v1_coco model training, this project will focus on preparing st
 
 Open Images Dataset, there are 600  unique classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes) [[3]](#ref).
 
-Figure  7:  The label distribution of  boxable validation set.
+Figure  7:  The classes distribution of  boxable validation set.
 
 ![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)<br/><br/>
 
-![Dataset Creation](dataset_creation.jpg)
+In addition to selecting the background image from the image size. There will be a random processes for adjusting the gamma , resizing, angle and placing the Dummy Card image on the background image to give a variety of sample sizes and positions, and the overall brightness of the image in the dataset, which illustrates the workflow in Figure 8.
+
+Figure  8:  The workflow of dataset creation.
+![Dataset Creation](dataset_creation.jpg)<br/><br/>
+
 -----------
 <a id='ref'></a>
 ### References
