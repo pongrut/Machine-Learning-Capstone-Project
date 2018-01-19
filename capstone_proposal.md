@@ -9,7 +9,7 @@ January 1st, 2018
 
 In Thailand, person identification methods have been continuing to evolve due to public security issues. The Office of The National Broadcasting and Telecommunications Commission Thailand (NBTC) has launched the new method of registering a new mobile phone SIM card since December 15, 2017. The biometric verification system this new registration method has been used across Thailand in all 55,000 locations which are mobile phone operators’ customer service shops and the networks of the mobile phone operators’ dealers and partners [[1]](#ref).
 
-Under this new method, new SIM card subscribers will have insert their ID cards into the finger print reader or the face recognition card reader at the registration locations. The card readers are connected to the mobile phones or PC of the registration locations. In the case of the face recognition system, the locations will take the SIM card users’ face with the mobile phones embedded with an NBTC registration application. Then the app will see if the captured face matches with the face stored in the ID card database. As expected face recognition method is more popular than fingerprint due to the added cost of card readers at service points, which range from 500 baht ($15) to 9,000 baht ($271) but face recognition is no extra cost, it requires only application installed.  Since the biometric verification system has been launched, there are two main problems with the system.
+Under this new method, new SIM card subscribers will have insert their ID cards into the finger print reader or the face recognition at the registration locations. The card readers are connected to the mobile phones or PC of the registration locations. In the case of the face recognition system, the locations will take the SIM card users’ face with the mobile phones embedded with an NBTC registration application. Then the app will see if the captured face matches with the face stored in the ID card database. As expected face recognition method is more popular than fingerprint due to the added cost of card readers at service points, which range from 500 baht ($15) to 9,000 baht ($271) but face recognition is no extra cost, it requires only application installed.  Since the biometric verification system has been launched, there are two main problems with the system.
 1. The result of the face recognition that the person in the ID card with the photograph is not matched with sim subscriber's photo, despite the fact the same person.
 2. There was a problem that the service points agent used photo from the ID card submitted as current person photo due to difficulty from the first problem.
 
@@ -41,7 +41,7 @@ rotate, adjust image  gamma , and then place randomly on a prepared background.
 
 ### Datasets and Inputs
 
-This project uses three types of image datasets: 1.) a person's face, 2.) another image without a Dummy Card in the picture, 3.) person portrait images.
+This project uses three types of image datasets: a) a person's face, b) another image without a Dummy Card in the picture, c) person portrait images.
 1. Creating a Dummy Card requires a human face image to simulate the replacement of an ID card by using a personal face images from the LFW dataset [[2]](#ref).
 There are 13,237 total human images from 5,750 individuals and each image size is 250x250 pixels.
 The image files will be shuffled then select images of people that contain more than 1 image in the folder. After that, the image will be filtered out image that contain more than one face because the ID card must have only one face. Finally, select only 1,030 first images to be used for Dummy Card creation.
@@ -66,7 +66,7 @@ The second object type is ID card which will be represented by the Dummy Card  T
 This project will use ssd_mobilenet_v1_coco pre-trained detection models[[7]](#ref) as the transfer learning base for the Dummy Card Detection Model.
 The performance of ssd_mobilenet_v1_coco is 21 mAP which is the subset of the MSCOCO evaluation protocol. However, the most popular metric uses for evaluating the quality of object detection is Mean Average Precision (mAP) on the protocol of the PASCAL VOC Challenge 2007[[8]](#ref). Therefore, this project benchmark model will base on the PASCAL VOC 2007 metrics and to match the benchmark model fairly with benchmark model.
 
-The benchmark model is Dat Tran's Raccoon detector[[9]](#ref) performance at the best score of 0.8 `mAP@0.5IOU`. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model is expected to score at 0.8 `mAP@0.5IOU` as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
+The benchmark model is Dat Tran's Raccoon detector[[9]](#ref) performance at the best score of 0.8 `mAP@0.5IOU`. The Raccoon detector uses 160 images for training and 40 images for evaluation.  The Dummy Card detector model will be expected to score at 0.8 `mAP@0.5IOU` as same as the Raccoon detector but use 900 images for training and 100 images for evaluating.
 
 
 
@@ -109,7 +109,7 @@ The API provides 12 different models that provide a trade off between speed of e
 
 The mAP (mean average precision) is the metric evaluation for precision and recall on detecting bounding boxes.
 The higher the mAP score, the more accurate of the model is.<br/>
-The 3 major CNNs (Convolutional Neural Networks) are  a) Single Shot Multibox Detector (SSD), b) Faster R-CNN (Faster Region-based CNN) and c) R_FCN (Region-Based Fully Convolutional Networks).
+The 3 major CNNs (Convolutional Neural Networks) of Object Detection API are  a) Single Shot Multibox Detector (SSD), b) Faster R-CNN (Faster Region-based CNN) and c) R_FCN (Region-Based Fully Convolutional Networks).
 
 
 **Faster R-CNN** uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [[13]](#ref).
@@ -141,7 +141,7 @@ For this project, choose **ssd_mobilenet_v1_coco** model based on speed, since i
 Figure 6:  The accuracy vs time of different configurations. Source[[15]](#ref)<br/><br/>
 ![Accuracy vs Time](https://raw.githubusercontent.com/joshua19881228/my_blogs/master/Computer_Vision/Reading_Note/figures/DetectorCompare_1.jpeg)
 
-For sd_mobilenet_v1_coco model training, this project will focus on preparing step to train data by selecting a dataset that contains a lot of unique data. The primary key is the background image data from the Open Images Dataset V3 dataset [[3]](#ref). Since the image of the Dummy Card is 206x324 pixels in order to maintain a bg / fg ratio of about 3: 1 regarding to some guideline hard negative mining technique [[14]](#ref).  Only background images that larger than 768 pixels from validation will be selected.
+For sd_mobilenet_v1_coco model training, this project will focus on preparing step to train data by selecting a dataset that contains a lot of unique data. The key success of the dataset is the background images from the Open Images Dataset V3 dataset [[3]](#ref). Since the image of the Dummy Card is 206x324 pixels in order to maintain a bg / fg ratio of about 3: 1 regarding to the guideline of hard negative mining technique [[14]](#ref).  Only background images that larger than 768 pixels from validation will be selected.
 
 Open Images Dataset, there are 600  unique classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes) [[3]](#ref).
 
@@ -149,7 +149,7 @@ Figure  7:  The classes distribution of  boxable validation set.
 
 ![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)<br/><br/>
 
-In addition to selecting the background image from the image size. There will be a random processes for adjusting the gamma , resizing, angle and placing the Dummy Card image on the background image to give a variety of sample sizes and positions, and the overall brightness of the image in the dataset, which illustrates the workflow in Figure 8.
+In addition to select the background image from the image size. There will be a random processes for adjusting the gamma , resizing, rotating and placing the Dummy Card image on the background image to give a variety of sample sizes and positions, and the overall brightness of the image in the dataset, which illustrates the workflow in Figure 8.
 
 Figure  8:  The workflow of dataset creation.
 ![Dataset Creation](dataset_creation.jpg)<br/><br/>
