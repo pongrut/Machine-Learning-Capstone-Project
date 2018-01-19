@@ -136,13 +136,18 @@ Training SSD is a challenge in every position of the image. It is fed into the c
 As a result, the network generates more bounding boxes than any other model, and almost all of them are negative examples. the ratio between the number of background (bg) RoIs
 (regions not belonging to any object of interest) and the number of foreground(fg) RoIs could reach as high as 100:1 which may cause imbalance problem.
 
+For this project, choose **ssd_mobilenet_v1_coco** model based on speed, since it is highly probable that future liveness detection with video input may be required. The ssd_mobilenet_v1_coco model has fastest speed and acceptable accuracy as shown in Figure 6.
 
-For this project to use some guideline hard negative mining technique to maintain at least a bg / fg ratio of 3:1 [[14]](#ref) to generate dataset for **ssd_mobilenet_v1_coco** model training.
+Figure 6:  The accuracy vs time of different configurations. Source[[15]](#ref)<br/><br/>
+![Accuracy vs Time](https://raw.githubusercontent.com/joshua19881228/my_blogs/master/Computer_Vision/Reading_Note/figures/DetectorCompare_1.jpeg)
 
+For sd_mobilenet_v1_coco model training, this project will focus on preparing step to train data by selecting a dataset that contains a lot of unique data. The primary key is the background image data from the Open Images Dataset V3 dataset [3]. Since the image of the Dummy Card is 206x324 pixels in order to maintain a bg / fg ratio of about 3: 1 regarding to some guideline hard negative mining technique [[14]](#ref).  Only background images that larger than 768 pixels from validation will be selected.
 
+Open Images Dataset, there are 600  unique classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes)[[3]](#ref).
 
-Overall, there are 600 distinct classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes).
-![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)
+Figure  7:  The boxable validation set.
+
+![Validation Set](https://github.com/openimages/dataset/raw/master/assets/v3-human-bbox-frequencies-validation.png)<br/><br/>
 
 ![Dataset Creation](dataset_creation.jpg)
 -----------
@@ -162,9 +167,8 @@ Overall, there are 600 distinct classes with a bounding box attached to at least
 [12] Parthasarathy, D (2017). A Brief History of CNNs in Image Segmentation, Retrieved from https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4.  [Last accessed 18 January 2018].<br/>
 [13] arXiv:1506.01497 [cs.CV]<br/>
 [14] arXiv:1608.02236 [cs.CV]<br/>
-
-
 [15] [15] LI, Z (2016). Speed/accuracy trade-offs for modern convolutional object detectors , Retrieved from http://joshua881228.webfactional.com/topic_ALL_list/14/ [Last accessed 18 January 2018].<br/>
+
 **Before submitting your proposal, ask yourself. . .**
 
 - Does the proposal you have written follow a well-organized structure similar to that of the project template?
