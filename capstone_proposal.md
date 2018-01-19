@@ -139,7 +139,7 @@ As a result, the network generates more bounding boxes than any other model, and
 For this project, choose **ssd_mobilenet_v1_coco** model based on speed, since it is highly probable that future liveness detection with video input may be required. The ssd_mobilenet_v1_coco model has fastest speed and acceptable accuracy as shown in Figure 6.
 
 Figure 6:  The accuracy vs time of different configurations. Source[[15]](#ref)<br/><br/>
-![Accuracy vs Time](https://raw.githubusercontent.com/joshua19881228/my_blogs/master/Computer_Vision/Reading_Note/figures/DetectorCompare_1.jpeg)
+![Accuracy vs Time(https://raw.githubusercontent.com/joshua19881228/my_blogs/master/Computer_Vision/Reading_Note/figures/DetectorCompare_1.jpeg)
 
 For sd_mobilenet_v1_coco model training, this project will focus on preparing step to train data by selecting a dataset that contains a lot of unique data. The primary key is the background image data from the Open Images Dataset V3 dataset [3]. Since the image of the Dummy Card is 206x324 pixels in order to maintain a bg / fg ratio of about 3: 1 regarding to some guideline hard negative mining technique [[14]](#ref).  Only background images that larger than 768 pixels from validation will be selected.
 
