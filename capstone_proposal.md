@@ -154,6 +154,12 @@ In addition to selecting the background image from the image size. There will be
 Figure  8:  The workflow of dataset creation.
 ![Dataset Creation](dataset_creation.jpg)<br/><br/>
 
+The Dummy Card detection model training pipeline  is shown in Figure 9.
+
+Figure 9: Model Training Pipeline.
+
+![Model Training Pipeline](model_training_pipeline.jpg)<br/><br/>
+
 -----------
 <a id='ref'></a>
 ### References
