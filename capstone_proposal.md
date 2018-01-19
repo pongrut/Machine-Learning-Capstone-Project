@@ -160,6 +160,12 @@ Figure 9: Model Training Pipeline.
 
 ![Model Training Pipeline](model_training_pipeline.jpg)<br/><br/>
 
+The frozen graph of the trained model will be used in the Tensorflow Object Detection API to detect the Dummy Card in the test image as in the example shown in Figure 10.
+
+Figure 10: The example result.
+
+![Example Result](test_result_example_small.jpg)<br/><br/>
+
 -----------
 <a id='ref'></a>
 ### References
