@@ -4,7 +4,6 @@ Pongrut Palarpong
 February 1, 2018
 
 ## I. Definition
-_(approx. 1-2 pages)_
 
 ### Project Overview
 In Thailand, person identification methods have been continuing to evolve due to public security issues. The Office of The National Broadcasting and Telecommunications Commission Thailand (NBTC) has launched the new method of registering a new mobile phone SIM card since December 15, 2017. The biometric verification system this new registration method has been used across Thailand in all 55,000 locations which are mobile phone operators’ customer service shops and the networks of the mobile phone operators’ dealers and partners [1].
