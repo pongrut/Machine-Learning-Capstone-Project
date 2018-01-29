@@ -11,11 +11,8 @@ In Thailand, person identification methods have been continuing to evolve due to
 
 Under this new method, new SIM card subscribers will have insert their ID cards into the finger print reader or the face recognition at the registration locations. The card readers are connected to the mobile phones or PC of the registration locations. In the case of the face recognition system, the locations will take the SIM card users’ face with the mobile phones embedded with an NBTC registration application. Then the app will see if the captured face matches with the face stored in the ID card database. As expected face recognition method is more popular than fingerprint due to an added cost of card readers at registration service shops which range from 500 baht ($15) to 9,000 baht ($271). Face recognition is no extra cost, it requires only application installed. Since the biometric verification system has been launched, there are two main problems with the system.
 
-	1. Face recognition failure rate of real person with real ID card is still too high.
-	2. Agent submits fake photo by photograph person photo from ID card.
-
-
-
+1. Face recognition failure rate of real person with real ID card is still too high.
+2. Agent submits fake photo by photograph person photo from ID card.
 
 
 ### Problem Statement
