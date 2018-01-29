@@ -23,6 +23,8 @@ This capstone project aims to solve 2nd problem of  face recognition system whic
 
 However, ID card is not general object that available in pre-trained models in order to make object detection algorithm able to detect ID card requires retrain the pre-trained models. Due to privacy restrictions, this project trains and detects the Dummy Cards instead of a real ID cards. Developed program is a simulation of person verification step start from receiving submitted image from agents and then locate the Dummy Card and also person face. It is possible that the agent may put the ID card on the prepared photo and then submit it. This extreme case may be detected by anti-spoofing liveness detection mechanism e.g. eye blinking detection or pupil dilation response but anti-spoofing liveness detection is not present in scope of this project.
 
+Dummy Card detection uses the TensorFlow Object Detection API [4] as a detection framework, it  is an open source framework built on top of TensorFlow that makes it easy to construct, train and deploy object detection models.
+This framework also provides a pre-trained detection set in the COCO data set, the Kitti dataset, and the Open Images dataset. These models can be useful for out-of-the-box in categories already in COCO (eg, human, automobile, etc.).
 
 ### Metrics
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
