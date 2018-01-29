@@ -7,15 +7,21 @@ February 1, 2018
 _(approx. 1-2 pages)_
 
 ### Project Overview
-In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
-- _Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?_
-- _Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?_
+In Thailand, person identification methods have been continuing to evolve due to public security issues. The Office of The National Broadcasting and Telecommunications Commission Thailand (NBTC) has launched the new method of registering a new mobile phone SIM card since December 15, 2017. The biometric verification system this new registration method has been used across Thailand in all 55,000 locations which are mobile phone operators’ customer service shops and the networks of the mobile phone operators’ dealers and partners [1].
+Under this new method, new SIM card subscribers will have insert their ID cards into the finger print reader or the face recognition at the registration locations. The card readers are connected to the mobile phones or PC of the registration locations. In the case of the face recognition system, the locations will take the SIM card users’ face with the mobile phones embedded with an NBTC registration application. Then the app will see if the captured face matches with the face stored in the ID card database. As expected face recognition method is more popular than fingerprint due to an added cost of card readers at registration service shops which range from 500 baht ($15) to 9,000 baht ($271). Face recognition is no extra cost, it requires only application installed. Since the biometric verification system has been launched, there are two main problems with the system.
+
+	1. Face recognition failure rate of real person with real ID card is still too high.
+	2. Agent submits fake photo by photograph person photo from ID card.
+
+
+
+
 
 ### Problem Statement
-In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
-- _Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?_
-- _Have you thoroughly discussed how you will attempt to solve the problem?_
-- _Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?_
+This capstone project aims to solve 2nd problem of  face recognition system which is "agent submits fake photo". The object detection is a technology related to computer vision, it was applied as the key algorithm for resolve the problem. Preventive policy for fake photo problem is  to force agents to submit 1 photo instead of 2 photos. Challenge of receiving a single image is that to locate the ID card and then detect person face in submitted image which requires object detection algorithm to complete this task.
+
+However, ID card is not general object that available in pre-trained models in order to make object detection algorithm able to detect ID card requires retrain the pre-trained models. Due to privacy restrictions, this project trains and detects the Dummy Cards instead of a real ID cards. Developed program is a simulation of person verification step start from receiving submitted image from agents and then locate the Dummy Card and also person face. It is possible that the agent may put the ID card on the prepared photo and then submit it. This extreme case may be detected by anti-spoofing liveness detection mechanism e.g. eye blinking detection or pupil dilation response but anti-spoofing liveness detection is not present in scope of this project.
+
 
 ### Metrics
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
