@@ -24,9 +24,18 @@ Dummy Card detection uses the TensorFlow Object Detection API [4] as a detection
 This framework also provides a pre-trained detection set in the COCO data set, the Kitti dataset, and the Open Images dataset. These models can be useful for out-of-the-box in categories already in COCO (eg, human, automobile, etc.).
 
 ### Metrics
-In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
-- _Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?_
-- _Have you provided reasonable justification for the metrics chosen based on the problem and solution?_
+The evaluation of detection task will be judged by the precision/recall curve in which 2 factors are two main parts: the detection are relevant to the object being detected (precision), and the number of detected objects that are relevant (recall).
+Precision = [True Positives/(True Positives + False Positives)]<br/>
+Recall = [True Positives/(True Positives + False Negatives)]<br/>
+
+True positives: Dummy Card images that the model correctly detected
+False positives: Not Dummy Card images that the model incorrectly detected, classifying them as Dummy Cards.
+False negatives: Dummy Card images that the model did, did not detect as Dummy Cards.
+
+The principal quantitative measure used will be the mean average precision (mAP) of PASCAL VOC 2007 metrics. Detections are considered True positives and False positives from the area overlapping with predicted bounding boxes BP and ground truth bounding boxes GTB (Intersection Over Union). Intersection Over Union (IOU) is an evaluation metric used to evaluate the accuracy of object detection model. If BP and GTB overlap 100% is the maximum accuracy. However, the mAP@0.5IOU is determined that overlap between the predicted bounding box of BP and the ground truth bounding box GTB must exceed 50% the prediction is considered a true positive. To calculate mean average precision (mAP) metrics by looping overall all ground-truth bounding boxes in the validation dataset (Fig.1).
+
+![IOU Formula](https://devblogs.nvidia.com/parallelforall/wp-content/uploads/2016/08/Figure5-624x362.png)<br/>
+Figure 1: Illustration of Intersection Over Union (IOU) Calculation.
 
 
 ## II. Analysis
