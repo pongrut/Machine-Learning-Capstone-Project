@@ -41,23 +41,99 @@ Figure 1: Illustration of Intersection Over Union (IOU) Calculation.
 _(approx. 2-4 pages)_
 
 ### Data Exploration
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-- _If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?_
-- _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
-- _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
-- _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
+The three types of image datasets were used in project are: a) a person's face, b) background images, c) person portrait images. 
+1. Person face images is used for creating dummy cards which uses person face images from the LFW dataset [2]. There are 13,237 total human images from 5,750 unique persons and each image size is 250x250 pixels. The image files was shuffled then select images of persons. The next process is filtered out all images that contain more than one face. Because the ID card must have only one face.  Final process, is to select only 1,093 images to be used as dummy cards (Fig.2). 973 images were used for training process, 100 images for validation the model and 30 for test the model. However, 10 images of 30 test images was photograph from 10 persons with real dummy cards and 20 remaining images used normal dummy card from LFW dataset. 
+
+2. The background images uses the Open Images Dataset V3 dataset [3] which provides 41,620 image URLs of validation set. After shuffled them then select only 1,083 images to be used which 973 training, 100 validating and 10 for difficult images test. The original URLs that have image size larger than 768 pixels width and height. Finally, resized those images with width and length at least 768 pixels which preserved the original aspect ratio (Fig.4).
+
+3. Three sets of test dataset were used for real situation simulation test (Fig.5).
+  - Difficult to detect images test, 10 images are difficult to detect in each image, the dummy card is located in various sizes, locations, distortions, color casts, and different translucency.
+  - Real background photos test, used 10 dummy cards then downloaded person images that larger than 1024 pixels from the google images.
+  - Real photographs test, print 10 dummy cards then take photo of the persons with their dummy cards.
+
+
 
 ### Exploratory Visualization
-In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant characteristic or feature about the dataset or input data?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
+In this section, three types of datasets are used for training, validating and testing. The dummy card images is shown in (Fig. 2) but the (Fig. 3-4) is the statistical data and sample images from Open Images dataset. 
 
+![sample_dummy_cards](sample_dummy_cards.jpg)<br/>
+Figure 2. Visualized sample dummy cards that created from LFW dataset.
+
+Open Images Dataset, there are 600 unique classes with a bounding box attached to at least one image. Of these, 545 classes are considered trainable (the intersection of the 600 boxable classes with the 5000 image-level trainable classes) (Fig. 3) 
+
+![Open_Images_validation_set](Open_Images_validation_set.jpg)<br/>
+Figure 3. The classes distribution of boxable validation set.
+
+![sample_backgrounds](sample_backgrounds.jpg)<br/>
+Figure 4. Visualized sample background that created from Open Images dataset.
+
+(Fig. 5) are examples of images used in the Test and Application phase.
+![sample test dataset 1](sample_test_set_1.jpg)<br/>
+![sample test dataset 2](sample_test_set_2.jpg)<br/>
+![sample test dataset 3](sample_test_set_3.jpg)<br/>
+Figure 5. Visualized sample test dataset which are a) Difficult to detect images, b) Real background photos test and c) Real photographs test.
 ### Algorithms and Techniques
-In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
-- _Are the algorithms you will use, including any default variables/parameters in the project clearly defined?_
-- _Are the techniques to be used thoroughly discussed and justified?_
-- _Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?_
+The object detection is main solution for fake photo problem. The object detection itself is more challenging than traditional image recognition and classification. The challenge is that not only objects of interest need to be recognized but located by finding the bounding box around it. However, object detection creates opportunities of applying computer vision to solve problems in many real-world problems.
+
+Google released a new object detection API for Tensorflow [4]. The API has been trained on the COCO dataset (Common Objects in Context) object categories shown in (Fig 6.). The API provide 12 pre-trained models with the Object Detection API. They are trained with the COCO dataset and are capable of detecting general objects in 90 categories in (Table 1). 
+The COCO mAP column shows the model's accuracy index. Higher numbers indicate better accuracy. As speed increases, accuracy decreases.
+
+
+![Categories-COCO-dataset](Categories-COCO-dataset.png)<br/>
+Figure 6.  Some of the object categories in COCO dataset, it contains photos of 90 objects types with a total of 2.5 million labeled instances in 328k images.
+
+Table 1. Tensorflow 12 different pre-trained models that provide a tradeoff between speed of execution and the accuracy in placing bounding boxes. The mAP (mean average precision) is the metric evaluation for precision and recall on detecting bounding boxes. The higher the mAP score, the more accurate of the model is. The 3 major CNNs (Convolutional Neural Networks) of Object Detection API are a) Single Shot Multibox Detector (SSD), b) Faster R-CNN (Faster Region-based CNN) and c) R_FCN (Region-Based Fully Convolutional Networks).
+![COCO-trained-models](COCO-trained-models.JPG)<br/>
+
+The Convolutional Neural Network (CNN) architectures (Fig. 7) are suitable for image classification because the image is indeed 2D width and height which CNN can effectively do convolution operation by sweeping the relationship between each part of the image and creating important filters (Fig. 8). This convolution operation makes it easy for CNN to detect objects in multiple locations, difference lightings, or even just some part of objects in an image.
+
+![Simple_ConvNet](Simple_ConvNet.jpg)<br/>
+Figure 7.  Simple ConvNet for image classification could have the simple architecture as [INPUT - CONV - RELU - POOL - FC].
+
+Convolution Layer works as a filter to screen an important feature to classify the class of input image. ReLU is used as an activation function to replace all negative values with 0.
+
+![Convolution_operation](Convolution_operation.jpg)<br/>
+Figure 8.  Convolution operation keeps the relationship between pixels in the image by using the filter size n by n pixels sweep all over the image area in order to create the 'Feature Map'.
+
+Max Pooling layers serve to reduce the number of dimensions in each feature map, the most important feature is drawn (Fig. 9). This will allow us to reduce the number of parameters and computations in the network also help to avoid overfitting. 
+
+![max_pooling](max_pooling.jpg)<br/>
+Figure 9. The example of Max Pooling, in the first window the Max Pooling (1,1,5,6) = 6, the next window Max Pooling (2,4,7,8) = 8, the next Max Pooling (3,2,1,2) = 3 and the last Max Pooling (1,0,3,4) = 4.
+
+
+The traditional CNNs architecture are convolution and max-pooling layers followed by a small number of fully connected layers. Most modern CNNs use a method called Global Average Pooling (GAP) to replace the traditional fully connected layers in CNN (Fig. 10).  The final softmax layer is trained on the target classification which generate output with separate probability for each of target classes.
+![global_avg_pooling](global_avg_pooling.jpg)<br/>
+Figure 10. The idea of Global Average Pooling (GAP) is to create feature maps for each of the corresponding categories of classification jobs in the last mlpconv layer. Instead of adding all fully connected layers to the top of the feature map, GAP use the average of each map and outputs pass directly into the softmax activation function that yields the predicted object classes.
+
+Faster R-CNN uses a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position (Fig. 11). The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection [13].
+
+
+![faster_rcnn_network](faster_rcnn_network.png)<br/>
+Figure 11. The Faster R-CNN has two networks: region proposal network (RPN) for generating region proposals and a network using these proposals to detect objects. The main different here with Fast R-CNN is that the later uses selective search to generate region proposals.
+
+R-FCN, or Region-based Fully Convolutional Net, shares 100% of the computations across every single output. Being fully convolutional, it ran into a unique problem in model design. each position-sensitive score map represents one relative position of one object class [11].
+
+
+![R-FCN](R-FCN.png)<br/>
+Figure 12. The R-FCN Key idea of R-FCN for object detection. In this illustration, there are k × k = 3 × 3 position-sensitive score maps generated by a fully convolutional network. For each of the k × k binsin an RoI, pooling is only performed on one of the k 2 maps (marked by different colors).
+
+SSD (Single-Shot Detector) differs from the 2 networks described before (Fig. 13), by eliminating the proposed generation and regions classification [11].
+
+![SSD](SSD.jpg)<br/>
+Figure 13. SSD will reduce the output space of bounding boxes. In prediction time, the network generates scores for the presence of each category object in each default box and produces adjustments to the box to better match the object shape. The network predictions from multiple feature maps with different resolutions to naturally handle objects of various sizes.
+
+For this project chooses ssd_mobilenet_v1_coco model based on speed [15], since it is highly probable that future liveness detection with video input may be required. The ssd_mobilenet_v1_coco model has fastest speed and acceptable accuracy as shown in (Fig 14.) 
+
+![models_acc_time_compare](models_acc_time_compare.jpg)<br/>
+Figure14. The accuracy vs time of different configurations.
+
+However, SSD training is a challenge, every position of the image is fed into the conv. blocks in various sizes and aspect ratio and then to the fully connected layer. As a result, the network generates more bounding boxes than any other model, and almost all of them are negative examples. the ratio between the number of background (bg) RoIs (regions not belonging to any object of interest) and the number of foreground(fg) RoIs could reach as high as 100:1 which may cause imbalance problem.
+
+For sd_mobilenet_v1_coco model training (MobileNets), this project will focus on preparing step to train data by selecting a dataset that contains a lot of unique data. The key success of the dataset is the background images from the Open Images Dataset V3 dataset [3]. Since the image of the Dummy Card is 206x324 pixels in order to maintain a bg / fg ratio of about 3: 1 regarding to the guideline of hard negative mining technique [14]. Only background images that larger than 768 pixels from validation will be selected.
+The MobileNets is an another class of the convolutional neural network is designed to work on mobile devices, its architecture uses less resources and works faster[16]. MobileNets are built from depthwise separable convolutions used in Inception models [17] to reduce the computation in the first few layers. Depthwise convolution is extremely efficient compare to standard convolution. The standard 3x3 convolutional filters are replaced by two layers which are 3x3 depthwise convolution and 1x1 pointwise convolution to build a depthwise separable filter (Fig. 15).
+
+![Depthwise](Depthwise.jpg)<br/>
+Figure 15. Left: Standard convolutional layer with batchnorm and ReLU. Right: Depthwise Separable convolutions with Depthwise and Pointwise layers followed by batchnorm and ReLU.
 
 ### Benchmark
 In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
