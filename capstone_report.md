@@ -136,9 +136,10 @@ The MobileNets is an another class of the convolutional neural network is design
 Figure 15. Left: Standard convolutional layer with batchnorm and ReLU. Right: Depthwise Separable convolutions with Depthwise and Pointwise layers followed by batchnorm and ReLU.
 
 ### Benchmark
-In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
-- _Has some result or value been provided that acts as a benchmark for measuring performance?_
-- _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
+The ssd_mobilenet_v1_coco model [7] is used as the transfer learning base for the Dummy Card Detection Model. The performance of ssd_mobilenet_v1_coco is 21 mAP which used the MSCOCO evaluation protocol. However, the most popular metric uses for object detection evaluation is Mean Average Precision (mAP) on the protocol of the PASCAL VOC Challenge 2007 [8]. Therefore, the benchmark model is based on the PASCAL VOC 2007 metrics. 
+
+The benchmark model is Dat Tran's Raccoon detector [9], the model performance was at 0.8 mAP@0.5IOU. The Raccoon detector useed 160 images for training and 40 images for evaluation. The dummy card detector model is expected to get score at 0.8 mAP@0.5IOU as same as the Raccoon detector but used 900 images for training and 100 images for evaluating.
+
 
 
 ## III. Methodology
