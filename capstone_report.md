@@ -132,7 +132,7 @@ However, SSD training is a challenge, every position of the image is fed into th
 For sd_mobilenet_v1_coco model training (MobileNets), this project will focus on preparing step to train data by selecting a dataset that contains a lot of unique data. The key success of the dataset is the background images from the Open Images Dataset V3 dataset [3]. Since the image of the Dummy Card is 206x324 pixels in order to maintain a bg / fg ratio of about 3: 1 regarding to the guideline of hard negative mining technique [14]. Only background images that larger than 768 pixels from validation will be selected.
 The MobileNets is an another class of the convolutional neural network is designed to work on mobile devices, its architecture uses less resources and works faster[16]. MobileNets are built from depthwise separable convolutions used in Inception models [17] to reduce the computation in the first few layers. Depthwise convolution is extremely efficient compare to standard convolution. The standard 3x3 convolutional filters are replaced by two layers which are 3x3 depthwise convolution and 1x1 pointwise convolution to build a depthwise separable filter (Fig. 15).
 
-![Depthwise](Depthwise.jpg)<br/>
+![Depthwise](Depthwise.png)<br/>
 Figure 15. Left: Standard convolutional layer with batchnorm and ReLU. Right: Depthwise Separable convolutions with Depthwise and Pointwise layers followed by batchnorm and ReLU.
 
 ### Benchmark
