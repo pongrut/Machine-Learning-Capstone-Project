@@ -1,88 +1,42 @@
-# Dummy Card Detection Capstone Project of Machine Learning Engineer Nanodegree
+# Dummy Card Detection Capstone Project
 
 One Paragraph of project description goes here
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+In Thailand, person identification methods have been continuing to evolve due to public security issues. The Office of The National Broadcasting and Telecommunications Commission Thailand (NBTC) has launched the new method of registering a new mobile phone SIM card since December 15, 2017. The biometric verification system this new registration method has been used across Thailand in all 55,000 locations which are mobile phone operators’ customer service shops and the networks of the mobile phone operators’ dealers and partners [1].
+Since the biometric verification system has been launched, there are two main problems with the system.
+1.	Face recognition failure rate of real person with real ID card is still too high.
+2.	Agent submits fake photo by photograph person photo from ID card.
+
+This capstone project aims to solve 2nd problem of face recognition system which is "agent submits fake photo". The object detection is a technology related to computer vision, it is applied as the key algorithm for resolve this problem. Preventive policy for fake photo problem is to force agents to submit one photo instead of two photos. Challenge of receiving a single image is that to locate the ID card and then detect person face in submitted image which requires object detection algorithm to complete this task.
+
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 ```
-Give examples
+- Python 3.5
+- Anaconda
+- Jupyter Notebook
+- Scikit Image
+- Tensorflow 1.4
+- dlib
+- Opencv
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+The following steps are instructions to get a development env running
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
 
 ```
-until finished
+- conda create -n card-detection -y python=3.5 jupyter nb_conda anaconda scikit-image 
+- source activate card-detection
+- conda install -c conda-forge tensorflow
+- conda install -c conda-forge dlib 
+- conda install -c conda-forge ffmpeg
+- conda install -c conda-forge/label/broken opencv
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 
