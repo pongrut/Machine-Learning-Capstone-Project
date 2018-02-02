@@ -40,5 +40,17 @@ The following steps are instructions to get a development env running
 - conda install -c conda-forge/label/broken opencv
 ```
 
+**Installation of Tensorflow Object Detection API**
+- git clone https://github.com/tensorflow/models.git
+- sudo apt-get install protobuf-compiler python-pil python-lxml
+- protoc object_detection/protos/*.proto --python_out=. # From tensorflow/models/research/
+- export PYTHONPATH=$PYTHONPATH:pwd:pwd/slim # From tensorflow/models/research/
+- cp ~/models/research/object_detection ~/card-detection-project
+
+**dLib models**
+- download shape_predictor_68_face_landmarks.dat and dlib_face_recognition_resnet_model_v1.dat from https://github.com/davisking/dlib-models
+- store both models in card-detection-project directory
+
+
 ### Running
 Run **dummy_card_detector.ipynb** from Jupyter Notebook
