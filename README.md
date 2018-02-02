@@ -14,7 +14,7 @@ This capstone project aims to solve 2nd problem of face recognition system which
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+These softwares and libraries need to bed installed.
 
 ```
 - Python 3.5
