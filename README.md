@@ -40,3 +40,5 @@ The following steps are instructions to get a development env running
 - conda install -c conda-forge/label/broken opencv
 ```
 
+### Running
+run dummy_card_detector.ipynb from Jupyter Notebook
