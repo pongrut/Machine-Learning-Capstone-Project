@@ -41,4 +41,4 @@ The following steps are instructions to get a development env running
 ```
 
 ### Running
-run dummy_card_detector.ipynb from Jupyter Notebook
+Run **dummy_card_detector.ipynb** from Jupyter Notebook
